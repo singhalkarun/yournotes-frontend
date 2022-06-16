@@ -19,7 +19,7 @@ const NotesContext: Context<NotesContextInterface | null> =
   createContext<NotesContextInterface | null>(null)
 
 export const NotesProvider = ({ children }: Props) => {
-  const { provider, isWalletConnected } = useWallet()
+  const { provider, isWalletConnected, walletAddress } = useWallet()
 
   const YourNotesContractAbi = YourNotesContract.abi
   const contractAddress = '0x70f0203CD7f4c8B42Acc55033Ccd3aCCb47A87E3'
@@ -33,7 +33,7 @@ export const NotesProvider = ({ children }: Props) => {
   useEffect(() => {
     setNotes([])
     getNotes()
-  }, [isWalletConnected])
+  }, [isWalletConnected, walletAddress])
 
   const getContract = () => {
     const signer = provider?.getSigner()
