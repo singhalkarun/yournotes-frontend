@@ -31,11 +31,14 @@ export const NotesProvider = ({ children }: Props) => {
   }, [])
 
   useEffect(() => {
+    setNotes([])
     getNotes()
   }, [isWalletConnected])
 
   const getContract = () => {
     const signer = provider?.getSigner()
+
+    console.log('Signer: ', signer)
     // try to figure out the expected parameters
     const contract = new ethers.Contract(
       contractAddress,
@@ -52,8 +55,12 @@ export const NotesProvider = ({ children }: Props) => {
       }
 
       const contract = getContract()
+
+      console.log(contract)
       // try to figure out the expected method
       const tx = await contract.addNote(note)
+
+      console.log(tx)
 
       const response = await tx.wait()
 
