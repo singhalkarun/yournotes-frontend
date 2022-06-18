@@ -19,7 +19,8 @@
       "@common/*": ["src/common/*"],
       "@modules/*": ["src/modules/*"],
       "@context/*":["src/context/*"],
-      "@contracts/*":["src/contracts/*"]
+      "@contracts/*":["src/contracts/*"],
+      "@public/*":["public/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
